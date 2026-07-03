@@ -41,6 +41,12 @@ import Testing
         #expect(params["limit"] as? Int == 12)
     }
 
+    @Test func commandsListParamsRequestTextScopeWithArgs() throws {
+        let params = try self.object(from: IOSGatewayChatTransport.makeCommandsListParamsJSON())
+        #expect(params["scope"] as? String == "text")
+        #expect(params["includeArgs"] as? Bool == true)
+    }
+
     @Test func chatSendParamsOmitEmptyAttachmentsAndKeepSessionFields() throws {
         let params = try self.object(
             from: IOSGatewayChatTransport.makeChatSendParamsJSON(
